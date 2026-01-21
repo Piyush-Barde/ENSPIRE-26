@@ -68,7 +68,7 @@
       { name: "Academic Partner", image: "../Landing Page/Images/upgrad.png", borderColor: "red", description: "Academic\nPartner" },
       { name: "Enterprise Partner", image: "../Landing Page/Images/Maannomay.png", borderColor: "#fee541", description: "Enterprise\nPartner" },
       { name: "Study Abroad Partner", image: "../Landing Page/Images/SIUK.png", borderColor: "#00ff37", description: "Study Abroad\nPartner" },
-      { name: "Beverage Partner", image: "image-16-1.png", borderColor: "#a100ff", description: "Beverage\nPartner" },
+      { name: "Beverage Partner", image: "../Landing Page/Images/Habbit.png", borderColor: "#a100ff", description: "Beverage\nPartner" },
       { name: "Digital Media Partner", image: "../Landing Page/Images/Siddhivinayak.png", borderColor: "#ff751f", description: "Digital Media\nPartner" },
       { name: "Gaming Partner", image: "../Landing Page/Images/RVR.png", borderColor: "#24c4e0", description: "Gaming\nPartner" },
       { name: "Clothing Partner", image: "../Landing Page/Images/Coasyloom.png", borderColor: "#fee541", description: "Clothing\nPartner" },
