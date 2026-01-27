@@ -22,10 +22,10 @@
             <button class="hamburger" onclick="toggleMenu()">☰</button>
             <nav class="custom-nav">
                 <nav class="custom-nav">
-                    <a href="../Home.html" class="active">Home</a>
+                    <a href="../Home.html">Home</a>
                     <a href="../HTML/events.html">Events</a>
                     <a href="../HTML/speakers.html">Speakers</a>
-                    <a href="../HTML/sponsors.html">Sponsors</a>
+                    <a href="../HTML/sponsors.html" class="active">Sponsors</a>
                     <a href="../HTML/contact.html">Contact Us</a>
                     <a href="../HTML/faqs.html">FAQs</a>
                     <a href="../HTML/passes.html" class="nav-passes">
@@ -45,14 +45,22 @@
     </header>
     <!-- HERO -->
 
-    <section class="hero">
+<section class="hero">
+  <!-- Background Video -->
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="../../ENSPIRE-26-/Images/Bg-img/Animating_Background_Stones_Only.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-        <div class="content">
+  
+  <!-- Hero Content -->
+  <div class="content">
 
+    
+    <button class="btn">Download Brochure</button>
+  </div>
+</section>
 
-            <button class="btn" style="margin-top: 500px;">Download Brochure</button>
-        </div>
-    </section>
     <!-- ABOUT -->
     <section class="about">
         <h2 class="about-title">ABOUT ENSPIRE’26</h2>
@@ -76,7 +84,7 @@
         </p>
     </section>
     <!-- EVENTS -->
-    <section class="events-section">
+    <section class="events-section space-bg">
         <h1 class="events-title" style="
     margin-left: 1rem;">EVENTS</h1>
 
@@ -160,7 +168,7 @@
 
         </div>
     </section>
-    <section class="current-speakers-section">
+    <section class="current-speakers-section space-bg">
 
         <h1 class="title">CURRENT SPEAKERS</h1>
 
@@ -203,7 +211,7 @@
 
     <h1 class="title">CURRENT SPONSERS</h1>
     <!-- SPONSORS GRID -->
-    <section class="marquee-container-sponsors">
+    <section class="marquee-container-sponsors space-bg">
         <div class="marquee-track-sponsors">
             <!-- Row 1 -->
             <div class="sponsor-card blue">
@@ -319,6 +327,7 @@
                 <p>Technical Partner</p>
             </div>
         </div>
+    </section>
     </section>
 
     <!-- FOOTER -->
