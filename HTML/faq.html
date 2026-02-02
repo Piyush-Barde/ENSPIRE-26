@@ -113,11 +113,11 @@
   <nav id="nav-menu">
     <ul>
      <li><a href="../HTML/landing_page.html">Home</a></li>
-     <li><a href="../HTML/events.html"class="active">Events</a></li>
+     <li><a href="../HTML/Event_page.html">Events</a></li>
      <li><a href="../HTML/speaker.html">Speakers</a></li>
      <li><a href="../HTML/Sponsor.html" >Sponsors</a></li>
      <li><a href="../HTML/contact_us.html">Contact us</a></li>
-     <li><a href="../HTML/faq.html">FAQs</a></li>
+     <li><a href="../HTML/faq.html"class="active">FAQs</a></li>
       <li class="pass-btn">
   <a href="../HTML/passes.html">
     <img src="../Images/Event page/Passes.jpeg" alt="Passes">
@@ -307,18 +307,24 @@
 </body>
 </html>
 
-    <script>
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', () => {
-                document.querySelectorAll('.faq-item').forEach(faq => {
-                    if (faq !== item.parentNode) {
-                        faq.classList.remove('active');
-                    }
-                });
-                item.parentNode.classList.toggle('active');
+   <script>
+    // Wrap in DOMContentLoaded to ensure elements exist
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevents clicks from bubbling
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('mobile-active');
+                console.log("Menu toggled"); // Check your browser console (F12) to see if this prints
             });
-        });
-    </script>
+        } else {
+            console.error("Hamburger or NavMenu element not found!");
+        }
+    });
+</script>
 
 </body>
 </html>

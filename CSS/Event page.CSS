@@ -139,17 +139,6 @@ nav ul li:hover {
 
 }
 
-/* --- Timeline Container --- */
-.timeline {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 95%;
-    margin: 80px auto 120px;
-    padding: 0 30px;
-    position: relative;
-}
-
 /* --- Individual Event Block --- */
 .event {
     text-align: center;
@@ -210,35 +199,35 @@ nav ul li:hover {
 }
 
 
+/* --- Universal Timeline Alignment Fix --- */
+
 .event h3 {
-    /* 1. Increase font size and weight */
-    font-size: 22px; /* Adjust this number to make it even bigger if needed */
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    
-    /* 2. Alignment Logic */
-    min-height: 90px; /* Increased slightly to accommodate larger text */
+    /* 1. Force all headings to occupy the exact same vertical space */
+    height: 80px; 
     display: flex;
-    align-items: center;
+    align-items: center;    /* Vertically centers the text within that 80px */
     justify-content: center;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;    /* Constant gap between text and stone */
     
-    /* 3. Text Glow (Optional) */
-    color: #fff;
-    text-shadow: 0 0 10px var(--event-color);
-    
-    transition: transform 0.3s ease;
+    /* 2. Prevent long words from breaking the layout */
+    overflow: hidden;
+    font-size: clamp(14px, 2vw, 20px); /* Automatically shrinks text on smaller screens */
+    line-height: 1.2;
 }
-/* --- The Connecting Line --- */
+
+.timeline {
+    display: flex;
+    align-items: flex-start; /* Aligns the tops of the event blocks */
+    justify-content: space-between;
+    position: relative;
+    padding-top: 20px;
+}
+
+/* Ensure the connecting line stays vertically centered relative to the stones */
 .line {
     position: absolute;
-    /* Adjust this 'top' value until it hits the dead-center of your stones */
-    top: 195px; 
-    left: 5%;
-    right: 5%;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.4); 
+    top: 155px; /* Adjust this number to match the center of your stones */
     z-index: 1;
 }
 /* Much stronger glow on hover */
@@ -635,67 +624,101 @@ body {
     filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
 }
 
-@media (max-width: 768px) {
-    @media (max-width: 768px) {
-      .timeline {
-        flex-direction: row !important; /* Forces side-by-side row */
-        overflow-x: auto; /* Allows swiping if the screen is too narrow */
-        padding-bottom: 20px;
-    }
-    
-    .event {
-        min-width: 140px; /* Ensures stones don't squish too much */
-    }
-    
-    /* Hide the scrollbar for a clean look */
-    .timeline::-webkit-scrollbar {
-        display: none;
-    }
-    /* 1. Reset Desktop Styles */
+
+  @media (max-width: 768px) {
+    /* 1. Header adjustment */
     header {
         justify-content: space-between;
+        width: 90%;
+        padding: 0 15px;
     }
 
-    /* 2. Initial State of the Menu (Hidden) */
+    /* 2. Mobile Menu (The Slide-out) */
     nav#nav-menu {
         position: fixed;
         top: 0;
-        left: -100%; /* Move it completely off-screen to the left */
+        left: -100%; /* Hidden by default */
         width: 100%;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.95); /* Darker for visibility */
+        background: rgba(0, 0, 0, 0.98); 
         backdrop-filter: blur(20px);
-        display: flex !important; /* Ensure flex is active */
+        display: flex !important;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: 0.5s ease-in-out; /* Smooth slide effect */
+        transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
         z-index: 1050;
     }
 
-    /* 3. ACTIVE STATE (This is what the JS triggers) */
     nav#nav-menu.active {
-        left: 0; /* Slide into view */
+        left: 0; /* Slide in */
     }
 
-    /* 4. Make the List Vertical */
+    /* 3. Smaller Font & Spacing */
     nav ul {
         flex-direction: column !important;
-        gap: 30px;
+        gap: 20px; /* Reduced gap to prevent overflow */
         text-align: center;
+        padding: 0;
     }
 
     nav ul li {
-        font-size: 24px !important;
-        color: white !important;
+        font-size: 18px !important; /* Made smaller as requested */
         list-style: none;
     }
-}
 
+    /* 4. The Hamburger & Cross Animation */
     .hamburger {
-        display: flex !important; /* Forces it to show on mobile */
+        display: flex !important;
+        z-index: 1100; /* Must be higher than nav-menu */
+        display: none; /* Keep hidden on desktop */
+        flex-direction: column;
+        justify-content: space-between;
+        width: 22px;   /* Shrunk from 30px */
+        height: 16px;  /* Shrunk from 30px/20px */
+        cursor: pointer;
+        z-index: 1101;
     }
 
+.bar {
+    width: 100%;
+    height: 2px;   /* Thinner lines for a sleek look */
+    background-color: #ffffff !important;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+/* Update the Cross Animation for the new smaller size */
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg); /* Adjusted from 8px */
+}
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg); /* Adjusted from -8px */
+}
+    /* 5. Timeline Row Fix */
+    .timeline {
+        flex-direction: row !important;
+        overflow-x: auto;
+        padding-bottom: 20px;
+        justify-content: flex-start;
+    }
+    
+    .event {
+        min-width: 140px;
+    }
+
+    /* Hide redundant elements in header to save space */
+    header > .pass-btn-container {
+        display: none; /* Hide the floating pass button in mobile header */
+    }
+     .mobile-pass-item img {
+        height: 55px !important;
+        margin-top: 15px;
+        display: block;
+        filter: drop-shadow(0 0 10px gold);
+        margin-left: auto;
+        margin-right: auto; /* Centers it in the menu */
+    }
     /* Center the gold ticket in the mobile list */
     .pass-btn {
         margin-top: 20px;
@@ -737,7 +760,7 @@ nav#nav-menu.active ul {
         opacity: 1 !important;
         margin: 20px auto; /* Centers it in the mobile list */
     }
-  }
+  
 .gold-ticket {
     background: linear-gradient(45deg, #ffd700, #ffae00);
     color: #000 !important; /* Force black text */
@@ -755,4 +778,75 @@ nav#nav-menu.active ul {
 
 .gold-ticket:hover {
     transform: scale(1.1) rotate(-2deg);
+}
+
+    /* 1. Target the links specifically */
+    nav#nav-menu ul li a {
+        font-size: 16px !important;    /* Shrunk from 24px/18px */
+        font-weight: 600 !important;   /* Medium thickness for readability */
+        text-transform: uppercase;
+        letter-spacing: 1px;           /* Cleaner spacing */
+    }
+
+    /* 2. Adjust the gap between items */
+    nav#nav-menu ul {
+        gap: 15px !important;          /* Brings the items closer together */
+        padding: 0;
+    }
+
+    /* 3. Ensure the mobile pass button scales with the smaller text */
+    .mobile-pass-item img {
+        height: 40px !important;       /* Scaled down to match smaller font */
+        margin-top: 10px;
+    }
+}
+
+/* UNIVERSAL MOBILE & TABLET RESPONSIVENESS */
+@media (max-width: 1024px) {
+    
+    /* 1. Reset Title Size */
+    .title {
+        font-size: 32px !important;
+        margin-top: 100px;
+    }
+
+    /* 2. Timeline: Switch from Row to a Scrollable Row */
+    /* This prevents the "stones" from overlapping on small screens */
+    .timeline {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important; /* Allows side-swiping */
+        gap: 20px;
+        padding-bottom: 30px;
+        justify-content: flex-start !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .event {
+        min-width: 150px; /* Ensures stones stay a readable size */
+    }
+
+    .line {
+        display: none; /* Lines usually break in mobile view */
+    }
+
+    /* 3. Event Cards: Switch from 2-Columns to 1-Column */
+    .event-cards {
+        grid-template-columns: 1fr !important; /* Stack cards vertically */
+        gap: 30px;
+        width: 90%;
+        perspective: none; /* Disable 3D on mobile if it causes lag */
+    }
+
+    .card {
+        width: 100% !important;
+        max-width: 320px;
+        height: 350px;
+    }
+
+    /* 4. Navbar Fix */
+    header {
+        width: 90% !important;
+        padding: 0 15px !important;
+    }
 }

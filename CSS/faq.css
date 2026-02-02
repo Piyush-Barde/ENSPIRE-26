@@ -73,21 +73,7 @@
         .active .arrow {
             transform: rotate(135deg);
         }
-        @media (max-width: 768px) {
-            .faq-section {
-                padding: 15px;
-            }
-            h2 {
-                font-size: 2em;
-            }
-            .faq-question {
-                font-size: 1em;
-            }
-            .faq-answer {
-                font-size: 0.9em;
-            }
-        }
-
+       
         body {
     background-color: black;
     background-image: url('BG.png');
@@ -1162,5 +1148,95 @@ row{
 
     .description p {
         font-size: 13px;
+    }
+}
+/* 1. Base Hamburger Styles (Invisible on Desktop) */
+.hamburger {
+    display: none; 
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* 2. Mobile Media Query (Threshold 768px) */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* Show icon */
+    }
+   
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row; /* Keeps them side-by-side */
+        height: auto; 
+        padding: 10px 20px;
+    }
+
+    #nav-menu {
+        display: none; /* Hide links by default */
+        position: absolute;
+        top: 80px; /* Sits below the pill header */
+        left: 0;
+        width: 100%;
+        background: rgba(20, 20, 20, 0.95);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        padding: 20px 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* THIS CLASS IS TRIGGERED BY YOUR JS */
+    #nav-menu.mobile-active {
+        display: block !important;
+    }
+
+    #nav-menu ul {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    #nav-menu.mobile-active ul li.pass-btn {
+        display: block !important;
+        margin-top: 10px;
+    }
+
+    nav ul li.pass-btn {
+        display: flex !important;
+        justify-content: center;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    /* Resize the image so it doesn't overflow the mobile menu */
+    .pass-btn img {
+        height: 50px !important; /* Adjusted from 60px */
+        width: auto;
+        transform: translateY(0) !important; /* Removes the desktop offset */
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.9));
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* Hamburger to X Animation */
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 }
