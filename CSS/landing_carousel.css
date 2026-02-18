@@ -2716,3 +2716,53 @@ body {
     font-size: 0.8rem;
   }
 }
+/* =========================================
+   MOBILE FOOTER FIX (Stacking One Below Other)
+   ========================================= */
+@media (max-width: 768px) {
+    
+    /* 1. Force the Links Section to stack vertically */
+    .footer-links-section {
+        display: flex !important;
+        flex-direction: column !important; /* Stacks items vertically */
+        align-items: center !important;    /* Centers them */
+        gap: 30px !important;              /* Spacing between groups */
+        width: 100% !important;
+        margin-top: 20px !important;
+    }
+
+    /* 2. Center align the text and items */
+    .footer-column {
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        min-width: auto !important;
+    }
+
+    /* 3. Fix the Heading & Underline to be centered */
+    .footer-column h3 {
+        width: auto !important;
+        display: inline-block !important; /* Makes the yellow line fits the text width */
+        margin-bottom: 15px !important;
+        text-align: center !important;
+    }
+
+    /* 4. Center the Social Icons */
+    .social-item {
+        justify-content: center !important;
+    }
+
+    /* 5. Center the links */
+    .footer-column a {
+        display: block !important;
+        width: 100% !important;
+    }
+}
+
+/* Ensure smaller screens (phones) also obey this */
+@media (max-width: 480px) {
+    .footer-links-section {
+        grid-template-columns: 1fr !important; /* Override any grid settings */
+        display: flex !important;
+    }
+}

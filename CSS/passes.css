@@ -276,77 +276,83 @@ li a.active { text-decoration: none; color: #f9c802 !important; text-shadow: 0 0
     }
 }
 
-/* =========================================
-   FOOTER STYLES
-   ========================================= */
+/* ===============================
+   FOOTER SECTION
+   =============================== */
 .footer-content {
+    background-color: #000;
     color: #fff;
     padding: 60px 50px;
     border-radius: 16px 16px 0 0;
     font-family: 'Open Sans', sans-serif;
-    clear: both;
 }
 
 .footer-grid {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Keeps Logo and Links side-by-side on Laptop */
     gap: 40px;
 }
 
+/* --- Left Side: Logo, Location, Map --- */
 .footer-logo-section {
-    flex: 1 1 300px;
+    flex: 0 0 350px; /* Fixed width prevents map from getting too small or too wide */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
 }
 
 .footer-logo-section img {
     width: 150px;
     border-radius: 10px;
-    margin-bottom: 15px;
 }
 
 .footer-logo-section p {
     font-size: 16px;
     line-height: 1.6;
+    margin: 0;
 }
 
+/* --- Right Side: Links Wrapper --- */
 .footer-links-section {
-    flex: 3;
+    flex: 1;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 50px;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; /* Forces links to stay in one row on Laptop */
+    gap: 20px; 
 }
 
+/* Individual Columns */
 .footer-column {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    min-width: 150px;
+    gap: 12px;
+    min-width: auto; 
 }
 
 .footer-column h3 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     margin-bottom: 10px;
     color: #fff;
-    position: relative;
+    white-space: nowrap;
 }
 
 .footer-column a {
-    text-decoration: none;
-    color: #ddd;
-    font-size: 16px;
+    text-decoration: none !important;
+    color: #ddd !important;
+    font-size: 15px;
     transition: color 0.25s ease;
-    padding: 0;
-    display: inline;
+    white-space: nowrap;
 }
 
 .footer-column a:hover {
-    color: #f9c802;
+    color: #f9c802 !important;
 }
 
+/* --- Social Icons --- */
 .social-links {
     display: flex;
     flex-direction: column;
@@ -360,8 +366,8 @@ li a.active { text-decoration: none; color: #f9c802 !important; text-shadow: 0 0
 }
 
 .social-item img {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     transition: transform 0.2s ease, filter 0.2s ease;
     filter: brightness(0) invert(1);
@@ -372,27 +378,8 @@ li a.active { text-decoration: none; color: #f9c802 !important; text-shadow: 0 0
     filter: brightness(0) saturate(100%) invert(81%) sepia(68%) saturate(727%) hue-rotate(7deg) brightness(103%) contrast(103%);
 }
 
-.social-item a {
-    color: #ddd;
-    font-size: 16px;
-    text-decoration: none;
-    transition: color 0.25s ease;
-    padding: 0;
-}
-
-.social-item img[alt="Twitter"] {
-    filter: none;
-    transition: transform 0.2s ease;
-}
-
-.social-item img[alt="Twitter"]:hover {
-    filter: none;
-    transform: scale(1.1);
-}
-
-.social-item a:hover {
-    color: #f9c802;
-}
+.social-item img[alt="Twitter"] { filter: none; transition: transform 0.2s ease; }
+.social-item img[alt="Twitter"]:hover { filter: none; transform: scale(1.1); }
 
 .footer-divider {
     width: 100%;
@@ -403,63 +390,94 @@ li a.active { text-decoration: none; color: #f9c802 !important; text-shadow: 0 0
 }
 
 .copyright {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 300;
     text-align: center;
     color: #bbb;
 }
 
-/* Footer Media Queries */
-@media (max-width: 1200px) {
-    .footer-links-section {
-        gap: 30px;
-    }
+/* ===========================
+   MAP CONTAINER STYLING
+   =========================== */
+.map-container {
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    margin-top: 5px; 
+    transition: all 0.3s ease;
 }
 
+.map-container:hover {
+    transform: translateY(-3px);
+    border-color: #f9c802;
+    box-shadow: 0 8px 25px rgba(249, 200, 2, 0.2);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+    filter: invert(90%) hue-rotate(180deg) brightness(0.9) contrast(1.2);
+    transition: filter 0.3s ease;
+}
+
+.map-container:hover iframe { filter: none; }
+
+/* ==============================
+   FOOTER RESPONSIVENESS
+   ============================== */
+
+/* Tablet (Portrait) - Optional Tweaks */
 @media (max-width: 1024px) {
+    .footer-content { padding: 40px 30px; }
+    .footer-grid { gap: 20px; }
+    /* Allow wrapping on smaller tablets if absolutely necessary */
+    .footer-links-section { gap: 15px; }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    .footer-content { padding: 40px 20px !important; }
+    
     .footer-grid {
-        flex-direction: column;
+        flex-direction: column !important; /* Stack Logo on top of Links */
         align-items: center;
         text-align: center;
+        gap: 40px;
+    }
+    
+    .footer-logo-section { 
+        width: 100%;
+        flex: none;
+        align-items: center;
     }
 
+    /* Stack the link columns vertically */
     .footer-links-section {
+        flex-direction: column !important; 
+        width: 100%;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 40px;
+        align-items: center !important;
+        gap: 40px !important;
     }
 
     .footer-column {
-        align-items: center;
+        width: 100%;
+        align-items: center; 
+        text-align: center;
     }
-}
-
-@media (max-width: 768px) {
-    .footer-content {
-        padding: 40px 20px;
-    }
-
-    .footer-links-section {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-}
-
-@media (max-width: 550px) {
-    .footer-logo-section img {
-        width: 100px;
+    
+    .social-item {
+        justify-content: center; 
     }
 
-    .footer-content {
-        padding: 35px 15px;
-    }
-
-    .footer-links-section {
-        gap: 25px;
-    }
-
-    .footer-column a {
-        font-size: 14px;
+    .map-container {
+        width: 100%;
+        height: 200px;
+        margin: 20px auto 0;
     }
 }
