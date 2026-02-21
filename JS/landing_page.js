@@ -106,14 +106,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-// This block in your events.js will still work perfectly with the new HTML
+// --- Updated Nav Toggle Logic ---
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
+const menuText = document.querySelector('.menu-text');
+const menuPill = document.querySelector('.menu-pill');
+const bars = document.querySelectorAll('.bar');
 
 if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
+        const isActive = navMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
+        
+        if (isActive) {
+            // Dark Mode for UI (to see against the cream background)
+            menuPill.style.borderColor = "#000000";
+            if (menuText) {
+                menuText.textContent = 'Close';
+                menuText.style.color = "#000000";
+            }
+            bars.forEach(b => b.style.backgroundColor = "#000000");
+            document.body.style.overflow = "hidden"; // Prevent background scroll
+        } else {
+            // Default White UI (to see against the galaxy background)
+            menuPill.style.borderColor = "#ffffff";
+            if (menuText) {
+                menuText.textContent = 'Menu';
+                menuText.style.color = "#ffffff";
+            }
+            bars.forEach(b => b.style.backgroundColor = "#ffffff");
+            document.body.style.overflow = "auto";
+        }
     });
 }
 
