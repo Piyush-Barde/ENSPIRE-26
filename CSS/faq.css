@@ -569,6 +569,7 @@ body {
    ============================== */
 @media (max-width: 768px) {
 
+    
     /* Header fixes */
 
 
@@ -602,7 +603,7 @@ body {
         position: fixed !important;
 
         top: 20px !important;
-        left: 50% !important;
+        left: 55% !important;
         transform: translateX(-50%) !important;
 
         width: 95% !important;

@@ -6,25 +6,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuText = document.querySelector('.menu-text');
     const bars = document.querySelectorAll('.bar');
 
-    if (hamburger && navMenu) {
+   if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
+            // Match the CSS .active class
             const isActive = navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
-
-            if (menuText) {
-                if (isActive) {
+            
+            if (isActive) {
+                if (menuText) {
                     menuText.textContent = 'Close';
-                    menuText.style.color = "#ffffff";
-                    menuText.style.opacity = "1";
-                    document.body.style.overflow = "hidden";
-                } else {
+                    menuText.style.color = "#ffffff"; 
+                }
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                if (menuText) {
                     menuText.textContent = 'Menu';
                     menuText.style.color = "#ffffff";
-                    menuText.style.opacity = "1";
-                    document.body.style.overflow = "auto";
                 }
+                document.body.style.overflow = 'auto';
             }
-
+        });
+    }
             // Ensure the hamburger bars also stay white
             bars.forEach(b => b.style.backgroundColor = "#ffffff");
         });
@@ -39,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.overflow = "auto";
             });
         });
-    }
+
 
     /* --- FAQ Toggle --- */
     const questions = document.querySelectorAll('.faq-question');
@@ -90,4 +92,3 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});

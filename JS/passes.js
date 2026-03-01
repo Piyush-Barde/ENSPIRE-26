@@ -53,26 +53,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    /* =========================================
-       3. HAMBURGER MENU
-       ========================================= */
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
+    const menuText = document.querySelector('.menu-text');
 
     if (hamburger && navMenu) {
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
+        hamburger.addEventListener('click', () => {
+            // Match the CSS .active class
+            const isActive = navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
-            navMenu.classList.toggle('mobile-active');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('mobile-active');
+            
+            if (isActive) {
+                if (menuText) {
+                    menuText.textContent = 'Close';
+                    menuText.style.color = "#ffffff"; 
+                }
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                if (menuText) {
+                    menuText.textContent = 'Menu';
+                    menuText.style.color = "#ffffff";
+                }
+                document.body.style.overflow = 'auto';
             }
         });
     }
 });
-// --- END MOBILE NAV TOGGLE ---
