@@ -2306,13 +2306,15 @@ header .logo img {
 }
 
 header .pass-btn img {
-  height: 46px !important;
+  height: 75px !important;
   /* Noticeably smaller PASSES Ticket */
   width: auto !important;
   cursor: pointer !important;
   transform: translateY(4px) !important;
   transition: transform 0.3s ease, filter 0.3s ease !important;
   filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7)) !important;
+  margin: 10px 0 0 0 !important;
+
 }
 
 header .pass-btn img:hover {
