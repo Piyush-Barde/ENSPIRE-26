@@ -596,3 +596,56 @@ body {
         display: none !important;
     }
 }
+/* Container for the pill shape */
+.menu-pill {
+    background-color: #000000; /* Solid black as requested */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for depth */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 20px;
+    border-radius: 50px; /* Creates the pill shape */
+    transition: all 0.3s ease;
+}
+
+/* Menu Text Style */
+.menu-text {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Hamburger Icon Bars */
+.hamburger-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bar {
+    width: 18px;
+    height: 2px;
+    background-color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+/* Hover effect to match the premium feel */
+.menu-pill:hover {
+    background-color: #1a1a1a;
+    transform: translateY(-1px);
+}
+
+/* Remove default button styling */
+.hamburger {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: fixed; /* Or absolute depending on your layout */
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+}
