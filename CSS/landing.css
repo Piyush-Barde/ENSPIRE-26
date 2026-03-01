@@ -25,630 +25,9 @@ main {
   margin-top: 0 !important;
 }
 
-/* --- Desktop Pill Navbar --- */
 
 
-@media (max-width: 900px) {
-  .timeline {
-    flex-direction: column;
-    gap: 40px;
-  }
 
-  .line {
-    display: none;
-  }
-
-  .event {
-    width: 100%;
-  }
-
-  .event-cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* --- Hamburger Icon Appearance --- */
-.hamburger {
-  display: none;
-  /* Hidden on desktop by default */
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  z-index: 1100;
-}
-
-.bar {
-  width: 100%;
-  height: 3px;
-  background-color: #ffffff !important;
-  /* Forces bars to be white */
-  border-radius: 2px;
-  transition: 0.3s ease;
-}
-
-.pass-btn img {
-  height: 45px;
-  /* Adjust to fit inside your 60px-70px header */
-  width: auto;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
-  display: block;
-}
-
-.pass-btn img:hover {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
-}
-
-
-@media (max-width: 768px) {
-  header {
-    position: fixed !important;
-    top: 20px !important;
-
-    /* 🔥 TRUE CENTER: Resetting this to 50% is the only way to fix alignment */
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-
-    /* Narrower width (88%) ensures it never touches the screen edges */
-    width: 88% !important;
-    max-width: 400px !important;
-
-    height: 60px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-
-    /* 🔥 SAFETY ZONE: This prevents the pill from sliding off-screen */
-    padding: 0 15px !important;
-
-    background: transparent !important;
-    border: none !important;
-    z-index: 10001 !important;
-  }
-
-  /* --- 2. Force the Menu to be Full-Screen and Transparent --- */
-  /* When the menu is active, make the header bar invisible so it looks part of the menu */
-  .logo {
-    display: flex !important;
-    align-items: center !important;
-    flex-shrink: 0 !important;
-  }
-
-
-  .hamburger {
-
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    flex-shrink: 0 !important;
-    /* Prevents squashing */
-  }
-
-  .menu-pill {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 5px !important;
-    right: 55px !important;
-    position: relative !important;
-
-    /* Lock the pill width to prevent it from shrinking to a circle */
-    min-width: 110px !important;
-    padding: 10px 18px !important;
-    margin-top: 5px;
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px);
-    border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
-    border-radius: 50px !important;
-  }
-
-  /* Ensure the text doesn't wrap or disappear */
-  .menu-text {
-    white-space: nowrap !important;
-    font-size: 14px !important;
-    display: inline-block !important;
-  }
-
-  .logo img {
-    height: 35px !important;
-    /* Slightly smaller for mobile elegance */
-    width: auto !important;
-    margin-top: 20px;
-    right: 10px;
-    position: relative;
-
-  }
-
-  /* --- 4. Hamburger Bars Styling --- */
-  .hamburger-bars {
-    position: relative;
-    width: 18px;
-    height: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .bar {
-    width: 100% !important;
-    height: 2px !important;
-    background-color: #ffffff !important;
-    border-radius: 10px;
-    transition: transform 0.2s ease, opacity 0.2s ease !important;
-  }
-
-  /* Cross Animation logic */
-
-  .hamburger.active .bar:nth-child(1) {
-    transform: translateY(5px) rotate(45deg) !important;
-  }
-
-  .hamburger.active .bar:nth-child(2) {
-    opacity: 0 !important;
-  }
-
-  .hamburger.active .bar:nth-child(3) {
-    transform: translateY(-5px) rotate(-45deg) !important;
-  }
-
-  /* --- 2. The Sliding Menu Card --- */
-  nav#nav-menu {
-    position: fixed !important;
-    top: 85px !important;
-    /* spacing below the pill */
-
-    /* 🔥 LOCK: Anchor to the right edge of the PHONE, not the header */
-    right: 4% !important;
-    left: auto !important;
-
-    width: 88% !important;
-    max-width: 300px !important;
-    height: auto !important;
-    max-height: 80vh !important;
-
-    border-radius: 25px !important;
-    background: rgba(16, 15, 15, 0.8) !important;
-    backdrop-filter: blur(25px) !important;
-    -webkit-backdrop-filter: blur(25px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 35px 20px !important;
-
-    /* Smooth slide animation */
-    transform: translateX(120%) !important;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    z-index: 10000 !important;
-    visibility: hidden !important;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8) !important;
-    overflow-y: auto !important;
-  }
-
-  nav#nav-menu.active {
-    transform: translateX(0) !important;
-    visibility: visible !important;
-    pointer-events: all !important;
-  }
-
-  /* Tighten link spacing for the smaller menu */
-  nav#nav-menu ul {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    gap: 20px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  nav#nav-menu ul li {
-    width: 100% !important;
-    text-align: center !important;
-  }
-
-  nav#nav-menu ul li a {
-    display: block !important;
-    width: 100% !important;
-    font-size: 1.5rem !important;
-    color: #ffffff !important;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
-    padding: 10px 0 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-  }
-
-  /* --- Passes Ticket Fix --- */
-
-  .pass-btn {
-    margin-top: 5px !important;
-    width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-  }
-
-
-
-  .pass-btn img {
-    height: 50px !important;
-    /* Smaller to ensure it never overflows */
-    width: auto !important;
-    display: block !important;
-    margin: 0 auto !important;
-  }
-}
-
-.pass-btn {
-  margin-top: 20px;
-  /* Gives it breathing room in the vertical list */
-}
-
-.pass-btn img {
-  display: block !important;
-  height: 75px !important;
-  /* Force a height you can see */
-  width: auto !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  margin: 20px auto;
-  /* Centers it in the mobile list */
-}
-
-.gold-ticket {
-  background: linear-gradient(45deg, #ffd700, #ffae00);
-  color: #000 !important;
-  /* Force black text */
-  padding: 8px 20px;
-  border-radius: 10px;
-  font-weight: 900;
-  font-size: 14px;
-  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 15px #ffae00;
-  border: 2px dashed #000;
-  cursor: pointer;
-  transition: 0.3s;
-  line-height: 1;
-}
-
-.gold-ticket:hover {
-  transform: scale(1.1) rotate(-2deg);
-}
-
-/* 1. Base Link Style */
-li a {
-  text-decoration: none !important;
-  /* Removes default underline */
-  color: white;
-  padding: 10px 15px;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-/* 2. HOVER: White Glow (No underline) */
-li a:hover {
-  text-decoration: none;
-  /* Double check to prevent hover underlines */
-  color: #ffffff;
-  /* Layered shadows create a neon 'glow' effect */
-  text-shadow: 0 0 8px #ffffff, 0 0 15px #ffffff;
-}
-
-/* 3. ACTIVE: Yellow State (No underline) */
-li a.active {
-  text-decoration: none;
-  color: #f9c802 !important;
-  /* Your Enspire Yellow */
-  text-shadow: 0 0 12px rgba(249, 200, 2, 0.5);
-  font-weight: 700;
-}
-
-nav {
-  width: 100%;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  /* Keeps large buttons equally spaced */
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  /* 1. Increase text size and weight */
-  font-size: 18px;
-  /* Standard links are usually 12-14px; 18px feels much bigger */
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  /* Spreads letters for a "wide" premium look */
-
-  /* 2. Coloring and Transition */
-  color: rgba(255, 255, 255, 0.85);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  white-space: nowrap;
-  /* Keeps items on one line */
-
-  /* 3. Padding for larger clickable area */
-  padding: 5px 10px;
-}
-
-/* 4. Hover effect to make them pop even more */
-nav ul li:hover {
-  color: #fff;
-  transform: scale(1.15);
-  /* Makes the link grow 15% bigger on hover */
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-}
-
-/* Ensure the Pass icon is tiny and balanced */
-.pass-btn img {
-  height: 60px !important;
-  width: auto;
-  cursor: pointer;
-
-  /* THE FIX: Moves the icon down by 5 pixels */
-  transform: translateY(5px);
-
-  /* Keep your existing transition and filter */
-  transition: transform 0.3s ease, filter 0.3s ease;
-  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
-}
-
-/* Update hover to keep the downward position while scaling */
-.pass-btn img:hover {
-  transform: translateY(5px) scale(1.1);
-  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
-}
-
-body.intro-active {
-  overflow: hidden;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Ensure links in general body don't break, but header links are handled separately */
-a {
-  text-decoration: none;
-}
-
-/* 2. Logo Consistency */
-.logo-section {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.logo-section img {
-  height: 2.375rem;
-  width: auto;
-  transform: scale(1.3);
-  transform-origin: left center;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.logo-section img:hover {
-  transform: scale(1.4);
-}
-
-.logo-text {
-  font-size: 10px;
-  font-weight: 600;
-  color: #f9c802;
-}
-
-/* 3. Navigation Links (BOOTSTRAP OVERRIDES) */
-nav.custom-nav {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* We use !important here to defeat Bootstrap's 'a' tag styling (usually blue/underlined) */
-nav.custom-nav a {
-  text-decoration: none !important;
-  color: #fff !important;
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.4375rem;
-  font-weight: 500;
-  position: relative;
-  padding-bottom: 0.375rem;
-  transition: color 0.4s ease, text-shadow 0.4s ease;
-}
-
-/* The Golden Line */
-/* nav.custom-nav a::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    width: 0%;
-    height: 2px;
-    background-color: #f9c802;
-    box-shadow: 
-        0 0 8px rgba(249, 200, 2, 0.8), 
-        0 0 16px rgba(249, 200, 2, 0.6);
-    transition: width 0.4s ease-in-out; 
-} */
-
-/* Hover & Active State */
-nav.custom-nav a:hover,
-nav.custom-nav a.active {
-  color: #f9c802 !important;
-  text-shadow: 0 0 12px rgba(249, 200, 2, 0.6), 0 0 24px rgba(249, 200, 2, 0.4);
-}
-
-nav.custom-nav a.pass-wrapper {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  text-decoration: none !important;
-  /* display: inline-flex;  Let it flow or inline-block */
-  /* Remove default hover effects from this wrapper */
-}
-
-nav.custom-nav a.pass-wrapper:hover {
-  text-shadow: none !important;
-  background: #000 !important;
-  color: inherit !important;
-}
-
-nav.custom-nav .nav-passes {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  /* For pseudo-element absolute positioning */
-
-  height: 5rem;
-  width: 9.375rem;
-
-  /* Remove background from main container */
-  background: transparent !important;
-
-  border: none !important;
-  box-shadow: none !important;
-  outline: none !important;
-
-  padding: 0;
-  margin-left: 10px;
-
-  color: inherit !important;
-  font-size: inherit !important;
-  cursor: pointer;
-
-  transform: none !important;
-  transition: transform 0.2s ease;
-  border-radius: 0 !important;
-  overflow: visible;
-  /* modification here just in case */
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-/* Move image to pseudo-element to use mix-blend-mode if needed */
-nav.custom-nav .nav-passes::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("../Images/Logo/pass-bg.png") center/100% 100% no-repeat;
-  /* Use screen blend mode to hide black background of the image itself if present */
-  mix-blend-mode: screen;
-  z-index: 0;
-}
-
-/* Text styling (ONLY text moves) */
-/* Text styling (ONLY text moves) */
-nav.custom-nav .nav-passes .passes-text {
-  position: relative;
-  z-index: 1;
-  /* Ensure text is above the image */
-  color: #000000 !important;
-  /* BLACK */
-  font-size: 16px !important;
-  /* SMALLER */
-  font-weight: 700 !important;
-
-  /* BOLD */
-}
-
-/* Hover effect */
-nav.custom-nav .nav-passes:hover {
-  transform: scale(1.05) !important;
-}
-
-/* Smooth Expansion */
-nav.custom-nav a:hover::after,
-nav.custom-nav a.active::after {
-  width: 100%;
-}
-
-/* HAMBURGER BUTTON (MOBILE) */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 3rem;
-  cursor: pointer;
-}
-
-/* MOBILE NAV MENU */
-.mobile-nav {
-  display: none;
-  flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  text-align: center;
-  padding: 2rem 1.25rem;
-  gap: 1.5rem;
-  position: fixed;
-  top: 4.6875rem;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-  border-bottom: 2px solid #f9c802;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-.mobile-nav a {
-  text-decoration: none !important;
-  color: #fff !important;
-  font-size: 1.25rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-family: "Open Sans", sans-serif;
-  padding: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.mobile-nav a:hover {
-  color: #f9c802 !important;
-  text-shadow: 0 0 10px rgba(249, 200, 2, 0.5);
-}
-
-.mobile-nav.active {
-  display: flex;
-  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
 
 
@@ -2882,10 +2261,262 @@ main {
   }
 }
 
-@media (max-width: 480px) {
-  .alumni-card {
-    /* Stack 1 by 1 on very small mobile screens */
-    flex: 0 0 100%;
-    max-width: 280px;
+
+/* 
+==========================================================================
+   FINAL MASTER NAVIGATION OVERRIDE (NUKE FROM ORBIT)
+   Everything above this point in landing.css or sub-page CSS is obsolete.
+========================================================================== 
+*/
+
+.hamburger {
+  display: none !important;
+  /* Hidden on desktop globally */
+}
+
+header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 30px !important;
+  position: fixed !important;
+  top: 15px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 95% !important;
+  max-width: 1200px !important;
+  height: 70px !important;
+  z-index: 20000 !important;
+  /* Higher than anything else */
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border-radius: 100px !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Global Desktop/Laptop Image Sizing */
+header .logo img {
+  height: 28px !important;
+  /* Noticeably smaller E-Cell Logo */
+  width: auto !important;
+  display: block !important;
+}
+
+header .pass-btn img {
+  height: 46px !important;
+  /* Noticeably smaller PASSES Ticket */
+  width: auto !important;
+  cursor: pointer !important;
+  transform: translateY(4px) !important;
+  transition: transform 0.3s ease, filter 0.3s ease !important;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7)) !important;
+}
+
+header .pass-btn img:hover {
+  transform: translateY(4px) scale(1.1) !important;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1)) !important;
+}
+
+/* Adaptive Shrink for Desktop/Laptop */
+@media (max-width: 1200px) {
+  header {
+    padding: 0 15px !important;
+    height: 65px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  header {
+    height: 60px !important;
+    width: 98% !important;
+    padding: 0 10px !important;
+  }
+
+  nav ul li {
+    font-size: 14px !important;
+    padding: 5px 6px !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .pass-btn img {
+    height: 40px !important;
+  }
+}
+
+/* Nav Link Polish */
+nav {
+  width: 100% !important;
+  display: block !important;
+}
+
+nav ul {
+  list-style: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-evenly !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+nav ul li {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  white-space: nowrap !important;
+  padding: 5px 10px !important;
+}
+
+nav ul li a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+nav ul li a.active {
+  color: #f9c802 !important;
+  text-shadow: 0 0 12px rgba(249, 200, 2, 0.5) !important;
+}
+
+/* Mobile Overrides (under 900px) */
+@media (max-width: 900px) {
+  header {
+    display: flex !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 80px !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    transform: none !important;
+    z-index: 20001 !important;
+    padding: 0 20px !important;
+  }
+
+  /* Hide BOTH the desktop nav and any specific IDs for the pill links */
+  header nav,
+  header #nav-menu:not(.active) {
+    display: none !important;
+  }
+
+  header .logo {
+    position: fixed !important;
+    top: 25px !important;
+    left: 30px !important;
+    z-index: 20005 !important;
+  }
+
+  header .logo img {
+    height: 40px !important;
+  }
+
+  .hamburger {
+    display: flex !important;
+    position: fixed !important;
+    top: 25px !important;
+    right: 30px !important;
+    /* Slightly tighter for a cleaner look */
+    z-index: 20005 !important;
+    cursor: pointer !important;
+  }
+
+  .menu-pill {
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 50px !important;
+    padding: 5px 12px !important;
+    /* Shrunk even more */
+    transition: all 0.3s ease !important;
+  }
+
+  .menu-text {
+    font-size: 12px !important;
+    /* Elegant small text */
+    font-weight: 600 !important;
+    color: #fff !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+  }
+
+  .hamburger-bars {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+    width: 14px !important;
+    /* Shrunk icon width */
+  }
+
+  .bar {
+    width: 100% !important;
+    height: 1.5px !important;
+    /* Sleeker bar thickness */
+    background-color: #ffffff !important;
+    border-radius: 10px !important;
+    transition: all 0.2s ease !important;
+    display: block !important;
+  }
+
+  /* Animated state for bars when active */
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(5px) rotate(45deg) !important;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0 !important;
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg) !important;
+  }
+
+  /* The actual slide out menu */
+  nav#nav-menu.active {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: fixed !important;
+    top: 90px !important;
+    left: 50% !important;
+    transform: translate(-50%, 0) !important;
+    width: 92% !important;
+    max-width: 320px !important;
+    background: rgba(8, 8, 8, 0.98) !important;
+    backdrop-filter: blur(30px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 30px !important;
+    flex-direction: column !important;
+    padding: 30px !important;
+    z-index: 10004 !important;
+    transition: 0.3s ease !important;
+  }
+
+  nav#nav-menu ul {
+    flex-direction: column !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 15px !important;
+  }
+
+  nav#nav-menu ul li {
+    padding: 0 !important;
+  }
+
+  nav#nav-menu ul li a {
+    font-size: 1.3rem !important;
+    /* Slightly smaller list font */
+    padding: 10px 0 !important;
+    display: block !important;
+    text-align: center;
   }
 }
